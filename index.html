@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Demo Blog - Tutorials, tips and news for web developers" />
+  <title>Demo Blog - Web Development Tutorials</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo-section">
+          <div class="logo">DB</div>
+          <div class="logo-text">
+            <h1>Demo Blog</h1>
+            <p class="subtitle">Tutorials, tips & news for developers</p>
+          </div>
+        </div>
+
+        <nav class="navbar">
+          <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="nav-menu" id="navMenu">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#blog" class="nav-link">Blog</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="search-bar">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Search posts..." 
+          aria-label="Search blog posts"
+          oninput="handleSearch()"
+        >
+        <button class="search-btn" aria-label="Search">🔍</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome to Demo Blog</h2>
+        <p>Explore in-depth tutorials, coding tips, and web development news</p>
+        <button class="cta-btn" onclick="scrollToBlogs()">Start Reading</button>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-container">
+      <!-- Posts Section -->
+      <section class="posts-section">
+        <div class="filter-bar">
+          <h3>Filter by Category:</h3>
+          <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterPosts('all')">All</button>
+            <button class="filter-btn" onclick="filterPosts('web')">Web Dev</button>
+            <button class="filter-btn" onclick="filterPosts('javascript')">JavaScript</button>
+            <button class="filter-btn" onclick="filterPosts('css')">CSS</button>
+            <button class="filter-btn" onclick="filterPosts('tutorial')">Tutorials</button>
+          </div>
+        </div>
+
+        <div id="postsList" class="posts-list">
+          <!-- Post 1 -->
+          <article class="post-card" data-category="web">
+            <div class="post-header">
+              <span class="post-date">March 15, 2026</span>
+              <span class="post-category">Web Development</span>
+            </div>
+            <h3 class="post-title">How to Build a Responsive Blog Website</h3>
+            <p class="post-excerpt">Learn the fundamentals of creating a responsive blog using HTML, CSS, and JavaScript. We'll cover layout design, mobile optimization, and best practices for user experience.</p>
+            <div class="post-meta">
+              <span class="read-time">8 min read</span>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="post-card" data-category="javascript">
+            <div class="post-header">
+              <span class="post-date">March 10, 2026</span>
+              <span class="post-category">JavaScript</span>
+            </div>
+            <h3 class="post-title">10 JavaScript Tips for Cleaner Code</h3>
+            <p class="post-excerpt">Discover practical JavaScript techniques to write cleaner, more maintainable code. From arrow functions to destructuring, master ES6+ features that will improve your productivity.</p>
+            <div class="post-meta">
+              <span class="read-time">6 min read</span>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="post-card" data-category="css">
+            <div class="post-header">
+              <span class="post-date">March 5, 2026</span>
+              <span class="post-category">CSS</span>
+            </div>
+            <h3 class="post-title">Mastering CSS Flexbox and Grid</h3>
+            <p class="post-excerpt">A comprehensive guide to modern CSS layout systems. Learn when to use Flexbox vs Grid, and build complex layouts with confidence using practical examples.</p>
+            <div class="post-meta">
+              <span class="read-time">10 min read</span>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="post-card" data-category="web">
+            <div class="post-header">
+              <span class="post-date">February 28, 2026</span>
+              <span class="post-category">Web Development</span>
+            </div>
+            <h3 class="post-title">Web Accessibility Best Practices</h3>
+            <p class="post-excerpt">Make your websites accessible to everyone. Learn about WCAG guidelines, semantic HTML, ARIA labels, and keyboard navigation to create inclusive web experiences.</p>
+            <div class="post-meta">
+              <span class="read-time">7 min read</span>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Post 5 -->
+          <article class="post-card" data-category="javascript">
+            <div class="post-header">
+              <span class="post-date">February 20, 2026</span>
+              <span class="post-category">JavaScript</span>
+            </div>
+            <h3 class="post-title">Understanding JavaScript Async/Await</h3>
+            <p class="post-excerpt">Master asynchronous JavaScript with async/await syntax. Understand how to handle promises elegantly, manage errors, and write cleaner async code patterns.</p>
+            <div class="post-meta">
+              <span class="read-time">9 min read</span>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="post-card" data-category="tutorial">
+            <div class="post-header">
+              <span class="post-date">February 15, 2026</span>
+              <span class="post-category">Tutorial</span>
+            </div>
+            <h3 class="post-title">Build a Todo App with Vanilla JavaScript</h3>
+            <p class="post-excerpt">Step-by-step tutorial to build a fully functional todo application. Learn DOM manipulation, local storage, and event handling in this beginner-friendly project.</p>
+            <div class="post-meta">
+              <span class="read-time">12 min read</span>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="load-more">
+          <button class="load-btn" onclick="loadMorePosts()">Load More Posts</button>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Recent Posts Widget -->
+        <div class="widget">
+          <h4 class="widget-title">Recent Posts</h4>
+          <ul class="widget-list">
+            <li><a href="#">How to Build a Responsive Blog Website</a></li>
+            <li><a href="#">10 JavaScript Tips for Cleaner Code</a></li>
+            <li><a href="#">Mastering CSS Flexbox and Grid</a></li>
+          </ul>
+        </div>
+
+        <!-- Popular Posts Widget -->
+        <div class="widget">
+          <h4 class="widget-title">Most Popular</h4>
+          <ul class="widget-list">
+            <li><a href="#">Web Accessibility Best Practices</a></li>
+            <li><a href="#">Understanding JavaScript Async/Await</a></li>
+            <li><a href="#">Build a Todo App with Vanilla JavaScript</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="widget">
+          <h4 class="widget-title">Categories</h4>
+          <ul class="widget-list categories">
+            <li><a href="#" onclick="filterPosts('web')">Web Development (3)</a></li>
+            <li><a href="#" onclick="filterPosts('javascript')">JavaScript (2)</a></li>
+            <li><a href="#" onclick="filterPosts('css')">CSS (1)</a></li>
+            <li><a href="#" onclick="filterPosts('tutorial')">Tutorials (1)</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Widget -->
+        <div class="widget newsletter-widget">
+          <h4 class="widget-title">Newsletter</h4>
+          <p class="widget-desc">Get the latest posts delivered to your inbox.</p>
+          <form id="newsletterForm" onsubmit="handleNewsletter(event)" class="newsletter-form">
+            <input 
+              type="email" 
+              class="newsletter-input" 
+              placeholder="Your email" 
+              required
+              aria-label="Email address"
+            >
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+          <div id="newsMessage" class="newsletter-message"></div>
+        </div>
+
+        <!-- About Widget -->
+        <div class="widget">
+          <h4 class="widget-title">About This Blog</h4>
+          <p class="widget-desc">Demo Blog is a place for web developers to learn, share, and grow together. Covering HTML, CSS, JavaScript, and modern web technologies.</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h5>About</h5>
+          <p>Demo Blog provides tutorials and tips for web developers at all levels.</p>
+        </div>
+        <div class="footer-section">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h5>Follow Us</h5>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Demo Blog. All rights reserved. | Built with HTML, CSS & JavaScript</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    
+    hamburger.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+
+    // Search functionality
+    function handleSearch() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const posts = document.querySelectorAll('.post-card');
+      
+      posts.forEach(post => {
+        const title = post.querySelector('.post-title').textContent.toLowerCase();
+        const excerpt = post.querySelector('.post-excerpt').textContent.toLowerCase();
+        
+        if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+          post.style.display = 'block';
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    }
+
+    // Filter posts by category
+    function filterPosts(category) {
+      const posts = document.querySelectorAll('.post-card');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      // Update active button
+      filterBtns.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter posts
+      posts.forEach(post => {
+        if (category === 'all' || post.dataset.category === category) {
+          post.style.display = 'block';
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    }
+
+    // Load more posts
+    function loadMorePosts() {
+      const postsList = document.getElementById('postsList');
+      const newPost = document.createElement('article');
+      newPost.className = 'post-card';
+      newPost.dataset.category = 'web';
+      newPost.innerHTML = `
+        <div class="post-header">
+          <span class="post-date">February 10, 2026</span>
+          <span class="post-category">Web Development</span>
+        </div>
+        <h3 class="post-title">New Post Loaded Dynamically</h3>
+        <p class="post-excerpt">This post was loaded dynamically using JavaScript. You can add as many posts as you want using this method.</p>
+        <div class="post-meta">
+          <span class="read-time">5 min read</span>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      `;
+      postsList.appendChild(newPost);
+    }
+
+    // Newsletter subscription
+    function handleNewsletter(event) {
+      event.preventDefault();
+      const form = document.getElementById('newsletterForm');
+      const message = document.getElementById('newsMessage');
+      const email = form.querySelector('input[type="email"]').value;
+      
+      message.textContent = '✓ Thanks for subscribing!';
+      message.style.color = 'green';
+      form.reset();
+      
+      setTimeout(() => {
+        message.textContent = '';
+      }, 3000);
+    }
+
+    // Scroll to blogs
+    function scrollToBlogs() {
+      document.querySelector('.posts-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Close mobile menu when link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
