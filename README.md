@@ -1,2 +1,2 @@
 # Blog-Website
-This is a blog website
+This website is about daily blogs.
